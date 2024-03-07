@@ -1,21 +1,6 @@
 ﻿  HelpWindow.cpp
   MainWindow.cpp
-C:\Users\glebl\Desktop\Reshala\Reshala\MainWindow.h(486,10): warning C4101: RightBorder: неиспользованная локальная переменная
-  (компиляция исходного файла "HelpWindow.cpp")
-  
-C:\Users\glebl\Desktop\Reshala\Reshala\MainWindow.h(485,10): warning C4101: LeftBorder: неиспользованная локальная переменная
-  (компиляция исходного файла "HelpWindow.cpp")
-  
-C:\Users\glebl\Desktop\Reshala\Reshala\MainWindow.h(486,10): warning C4101: RightBorder: неиспользованная локальная переменная
-  (компиляция исходного файла "MainWindow.cpp")
-  
-C:\Users\glebl\Desktop\Reshala\Reshala\MainWindow.h(485,10): warning C4101: LeftBorder: неиспользованная локальная переменная
-  (компиляция исходного файла "MainWindow.cpp")
-  
-C:\Users\glebl\Desktop\Reshala\Reshala\MainWindow.cpp(7,1): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
-  QuadraticEquationSolver.cpp
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+C:\Users\glebl\Documents\GitHub\coursework\Reshala\MainWindow.cpp(7,1): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
   Создание кода...
-C:\Users\glebl\Desktop\Reshala\Reshala\QuadraticEquationSolver.cpp(97,1): warning C4715: QuadraticEquationSolver::Solve: значение возвращается не при всех путях выполнения
   HelpWindow.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  Reshala.vcxproj -> C:\Users\glebl\Desktop\Reshala\x64\Debug\Reshala.exe
+  Reshala.vcxproj -> C:\Users\glebl\Documents\GitHub\coursework\x64\Debug\Reshala.exe

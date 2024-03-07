@@ -484,12 +484,33 @@ namespace Reshala {
 	//график
 		double LeftBorder;
 		double RightBorder;
+		double Peak = solver->GetPeak(a, b);
 
 		//очистка графика от предыдущих решений
 		FunctionVizualizer->Series[0]->Points->Clear();
 		FunctionVizualizer->Series[1]->Points->Clear();
 		FunctionVizualizer->Series[2]->Points->Clear();
 
+		//границы рисования графика
+		LeftBorder = c * -5;
+		RightBorder = c * 5;
+		if (LeftBorder > RightBorder) {
+			double temp;
+			temp = RightBorder;
+			RightBorder = LeftBorder;
+			LeftBorder = temp;
+		}
+
+		//оси
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, LeftBorder));
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak));
+		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
+		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
+
+
+		for (double i = LeftBorder; i <= RightBorder; i++) {
+			FunctionVizualizer->Series[0]->Points->AddXY(i, solver->Function(a, b, c, i));
+		}
 
 
 

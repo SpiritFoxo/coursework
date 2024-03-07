@@ -39,6 +39,33 @@ array<String^>^ QuadraticEquationSolver::ThirdType() {
 	return roots;
 }
 
+array<String^>^ QuadraticEquationSolver::FourthType() {
+	array<String^>^ roots = gcnew array<String^>(4);
+	roots[0] = "0";
+	roots[1] = "";
+	roots[2] = "0";
+	roots[3] = "";
+	return roots;
+
+}
+array<String^>^ QuadraticEquationSolver::FifthType() {
+	array<String^>^ roots = gcnew array<String^>(4);
+	roots[0] = "Уравнение неверно";
+	roots[1] = "";
+	roots[2] = "Уравнение неверно";
+	roots[3] = "";
+	return roots;
+
+}
+array<String^>^ QuadraticEquationSolver::SixthType(double c, double b) {
+	array<String^>^ roots = gcnew array<String^>(4);
+	roots[0] = Convert::ToString((-1 * c) / b);
+	roots[1] = "";
+	roots[2] = Convert::ToString(-1 * c) + "/" + Convert::ToString(b);
+	roots[3] = "";
+	return roots;
+}
+
 
 
 array<String^>^ QuadraticEquationSolver::Solve(double a, double b, double c)
@@ -71,32 +98,23 @@ array<String^>^ QuadraticEquationSolver::Solve(double a, double b, double c)
 	}
 
 	if ((a == 0 || b == 0) && c == 0) {
-		roots[0] = "0";
-		roots[1] = "";
-		roots[2] = "0";
-		roots[3] = "";
+		roots = FourthType();
 		return roots;
 	}
 
 	if ((a == 0 && b == 0) && c != 0) {
-		roots[0] = "Уравнение неверно";
-		roots[1] = "";
-		roots[2] = "Уравнение неверно";
-		roots[3] = "";
+		roots = FifthType();
 		return roots;
 	}
 
 	if (a == 0 && b != 0 && c != 0) {
-		roots[0] = Convert::ToString((-1 * c) / b);
-		roots[1] = "";
-		roots[2] = Convert::ToString(-1 * c) + "/" + Convert::ToString(b);
-		roots[3] = "";
+		roots = SixthType(c, b);
 		return roots;
 	}
 
 }
 
-double QuadraticEquationSolver::Function(double a, double b, double c, int x)
+double QuadraticEquationSolver::Function(double a, double b, double c, double x)
 {
 	double y;
 	y = a * pow(x, 2) + b * x + c;
