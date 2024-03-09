@@ -462,11 +462,6 @@ namespace Reshala {
 
 
 
-		
-		c = Convert::ToDouble(ThirdKTB->Text);
-
-
-
 
 		//объ€вление переменных дл€ хранени€ корней и класса решени€
 		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver;
@@ -492,26 +487,28 @@ namespace Reshala {
 		FunctionVizualizer->Series[2]->Points->Clear();
 
 		//границы рисовани€ графика
-		LeftBorder = c * -5;
-		RightBorder = c * 5;
-		if (LeftBorder > RightBorder) {
-			double temp;
-			temp = RightBorder;
+		LeftBorder = c * -2;
+		if (LeftBorder > 0) {
 			RightBorder = LeftBorder;
-			LeftBorder = temp;
+			LeftBorder = -1 * LeftBorder;
+		}
+		if (LeftBorder == 0) {
+			RightBorder = 5;
+			LeftBorder = -5;
 		}
 
 		//оси
-		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, LeftBorder));
-		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak));
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak + LeftBorder));
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak)-3);
 		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
 		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
 
-
-		for (double i = LeftBorder; i <= RightBorder; i++) {
+		//сам график
+		for (double i = (Peak + LeftBorder); i <= (Peak + RightBorder); i = i + 1) {
 			FunctionVizualizer->Series[0]->Points->AddXY(i, solver->Function(a, b, c, i));
 		}
 
+		//метод подбора
 
 
 

@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|solutionrelative:Reshala\\MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form",
-      "RelativeMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|solutionrelative:Reshala\\MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\QuadraticEquationSolver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|solutionrelative:Reshala\\QuadraticEquationSolver.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\QuadraticEquationSolver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|solutionrelative:Reshala\\QuadraticEquationSolver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form",
+      "RelativeMoniker": "D:0:0:{B7435462-15B6-460C-BC66-8DE584DFA228}|Reshala\\Reshala.vcxproj|solutionrelative:Reshala\\MainWindow.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,26 +30,26 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "QuadraticEquationSolver.h",
               "DocumentMoniker": "C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\QuadraticEquationSolver.h",
               "RelativeDocumentMoniker": "Reshala\\QuadraticEquationSolver.h",
               "ToolTip": "C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\QuadraticEquationSolver.h",
               "RelativeToolTip": "Reshala\\QuadraticEquationSolver.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-07T19:54:00.081Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "QuadraticEquationSolver.cpp",
               "DocumentMoniker": "C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\QuadraticEquationSolver.cpp",
               "RelativeDocumentMoniker": "Reshala\\QuadraticEquationSolver.cpp",
               "ToolTip": "C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\QuadraticEquationSolver.cpp",
               "RelativeToolTip": "Reshala\\QuadraticEquationSolver.cpp",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAADsAAAApAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAJAAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-07T19:54:00.02Z",
               "EditorCaption": ""
@@ -62,14 +62,14 @@
               "RelativeDocumentMoniker": "Reshala\\MainWindow.h",
               "ToolTip": "C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\MainWindow.h",
               "RelativeToolTip": "Reshala\\MainWindow.h",
-              "ViewState": "AQIAAN8BAAAAAAAAAAAAAOwBAAAAAAAA",
+              "ViewState": "AQIAAOQBAAAAAAAAAAAAAP8BAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-07T19:54:00.19Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MainWindow.h [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\glebl\\Documents\\GitHub\\coursework\\Reshala\\MainWindow.h",
               "RelativeDocumentMoniker": "Reshala\\MainWindow.h",

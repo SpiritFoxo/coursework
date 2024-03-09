@@ -8,7 +8,7 @@ public:
 	array<String^>^ Solve(double a, double b, double c);
 	double Function(double a, double b, double c, double x);
 	double GetPeak(double a, double b);
-	array<String^>^ SolveSelection(double precision, double a, double b, double c);
+	array<String^>^ SolveSelection(double precision, double border, double a, double b, double c);
 	
 private:
 	array<String^>^ FirstType(double a, double b, double d);

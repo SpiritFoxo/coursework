@@ -133,14 +133,16 @@ double QuadraticEquationSolver::GetPeak(double a, double b)
 	return ((-1 * b) / (2 * a));
 }
 
-array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double a, double b, double c) {
+array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double border, double a, double b, double c) {
 
 	double Peak = GetPeak(a, b);
-	array<String^>^ roots = gcnew array<String^>(2);
+	array<String^>^ roots = gcnew array<String^>(4);
 	if (DiscriminantFinder(a, b, c) >= 0) {
 		while (true)
 		{
-			if (((AltFunc(a, b, c, Peak) <= 0) && (AltFunc(a, b, c, Peak + precision) > 0)) || ((AltFunc(a, b, c, Peak) >= 0) && (AltFunc(a, b, c, Peak + precision) < 0))) {
+			if ( (Function(a, b, c, Peak) < 0 && Function(a, b, c, Peak + precision) > 0) || (Function(a, b, c, Peak) > 0 && Function(a, b, c, Peak + precision) < 0) ) {
+				roots[0] = Convert::ToString(Peak);
+				roots[1] = Convert::ToString(Peak + precision);
 				break;
 			}
 			else
@@ -150,8 +152,7 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 		}
 	}
 
-	roots[0] = Convert::ToString(Peak);
-	roots[1] = Convert::ToString(Peak + precision);
+	
 
 	return roots;
 }
