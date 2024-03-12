@@ -15,10 +15,9 @@ private:
 	array<String^>^ SecondType(double a, double b, double d);
 	array<String^>^ ThirdType();
 	array<String^>^ FourthType();
-	array<String^>^ FifthType();
-	array<String^>^ SixthType(double c, double b);
+	array<String^>^ FifthType(double c, double b);
+	array<String^>^ SixthType();
 	double DiscriminantFinder(double a, double b, double c);
-	double AltFunc(double a, double b, double c, double x);
 
 };
 

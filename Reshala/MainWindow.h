@@ -262,7 +262,7 @@ namespace Reshala {
 			this->FunctionVizualizer->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->FunctionVizualizer->Legends->Add(legend1);
-			this->FunctionVizualizer->Location = System::Drawing::Point(395, 12);
+			this->FunctionVizualizer->Location = System::Drawing::Point(390, 44);
 			this->FunctionVizualizer->Name = L"FunctionVizualizer";
 			series1->BorderWidth = 3;
 			series1->ChartArea = L"ChartArea1";
@@ -330,15 +330,16 @@ namespace Reshala {
 				static_cast<System::Byte>(204)));
 			this->precisionbox->Location = System::Drawing::Point(12, 529);
 			this->precisionbox->Name = L"precisionbox";
-			this->precisionbox->Size = System::Drawing::Size(80, 26);
+			this->precisionbox->Size = System::Drawing::Size(171, 26);
 			this->precisionbox->TabIndex = 17;
+			this->precisionbox->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainWindow::precisionbox_KeyPress);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(98, 535);
+			this->label4->Location = System::Drawing::Point(194, 535);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(149, 20);
 			this->label4->TabIndex = 18;
@@ -360,11 +361,11 @@ namespace Reshala {
 			this->SelectedRoots->AutoSize = true;
 			this->SelectedRoots->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->SelectedRoots->Location = System::Drawing::Point(4, 621);
+			this->SelectedRoots->Location = System::Drawing::Point(4, 619);
 			this->SelectedRoots->Name = L"SelectedRoots";
-			this->SelectedRoots->Size = System::Drawing::Size(14, 20);
+			this->SelectedRoots->Size = System::Drawing::Size(45, 20);
 			this->SelectedRoots->TabIndex = 20;
-			this->SelectedRoots->Text = L"r";
+			this->SelectedRoots->Text = L"[ ] ; [ ]";
 			// 
 			// MainWindow
 			// 
@@ -425,15 +426,25 @@ namespace Reshala {
 		if (e->KeyChar == 8) { return; }
 		e->Handled = true;
 	}
+	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+		if (e->KeyChar == ',') { return; }
+		if (e->KeyChar == 8) { return; }
+		e->Handled = true;
+	}
 
 
-		   //ќбработчик конпки
+	//ќбработчик конпки
 	private: System::Void SolveButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		double a, b, c, pr;
 
-		//если поле пусто, то точность подбора будет равна 1
-		if (precisionbox->Text != "") {
+		//если поле пусто или равно 0, то точность подбора будет равна 1
+		if (precisionbox->Text == "" || precisionbox->Text == "0") {
+			pr = 1;
+		}
+		else
+		{
 			pr = Convert::ToDouble(precisionbox->Text);
 		}
 
@@ -461,14 +472,11 @@ namespace Reshala {
 		}
 
 
-
-
 		//объ€вление переменных дл€ хранени€ корней и класса решени€
 		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver;
 		array<String^>^ Roots = gcnew array<String^>(4);
 		array<String^>^ RootsSelection = gcnew array<String^>(2);
 		Roots = solver->Solve(a, b, c);
-		//RootsSelection = solver->SolveSelection(a, b, c, pr);
 
 		//»зменение текста дл€ вывода корней
 		FirstRoot->Text = Roots[0];
@@ -479,7 +487,10 @@ namespace Reshala {
 	//график
 		double LeftBorder;
 		double RightBorder;
-		double Peak = solver->GetPeak(a, b);
+		double Peak = 0;
+		if (a != 0) {
+			Peak = solver->GetPeak(a, b);
+		}
 
 		//очистка графика от предыдущих решений
 		FunctionVizualizer->Series[0]->Points->Clear();
@@ -492,6 +503,10 @@ namespace Reshala {
 			RightBorder = LeftBorder;
 			LeftBorder = -1 * LeftBorder;
 		}
+		if (LeftBorder < 0) {
+			RightBorder = -1 * LeftBorder;
+		}
+
 		if (LeftBorder == 0) {
 			RightBorder = 5;
 			LeftBorder = -5;
@@ -510,7 +525,8 @@ namespace Reshala {
 
 		//метод подбора
 
-
+		RootsSelection = solver->SolveSelection(pr, RightBorder, a, b, c);
+		SelectedRoots->Text = RootsSelection[0] + " " + RootsSelection[1];
 
 
 		//очистка пам€ти от экземпл€ра класса и массивов
@@ -526,9 +542,8 @@ namespace Reshala {
 		HelpWindow^ hw = gcnew HelpWindow;
 		hw->Show();
 	}
-
-
-	};
+	
+};
 
 }
  

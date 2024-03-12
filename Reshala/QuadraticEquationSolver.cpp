@@ -12,7 +12,7 @@ double QuadraticEquationSolver::DiscriminantFinder(double a, double b, double c)
 array<String^>^ QuadraticEquationSolver::FirstType(double a, double b, double d)
 {
 	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = Convert::ToString((-1 * b + sqrt(d)) / (2 * a));
+	roots[0] = Convert::ToString(((-1 * b + sqrt(d)) / (2 * a)));
 	roots[1] = Convert::ToString((-1 * b - sqrt(d)) / (2 * a));
 	roots[2] = "(" + Convert::ToString(-1 * b) + " + sqrt(" + Convert::ToString(d) + ")) / " + Convert::ToString(2 * a);
 	roots[3] = "(" + Convert::ToString(-1 * b) + " - sqrt(" + Convert::ToString(d) + ")) / " + Convert::ToString(2 * a);
@@ -48,22 +48,24 @@ array<String^>^ QuadraticEquationSolver::FourthType() {
 	return roots;
 
 }
-array<String^>^ QuadraticEquationSolver::FifthType() {
-	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = "Уравнение неверно";
-	roots[1] = "";
-	roots[2] = "Уравнение неверно";
-	roots[3] = "";
-	return roots;
 
-}
-array<String^>^ QuadraticEquationSolver::SixthType(double c, double b) {
+array<String^>^ QuadraticEquationSolver::FifthType(double c, double b) {
 	array<String^>^ roots = gcnew array<String^>(4);
 	roots[0] = Convert::ToString((-1 * c) / b);
 	roots[1] = "";
 	roots[2] = Convert::ToString(-1 * c) + "/" + Convert::ToString(b);
 	roots[3] = "";
 	return roots;
+}
+
+array<String^>^ QuadraticEquationSolver::SixthType() {
+	array<String^>^ roots = gcnew array<String^>(4);
+	roots[0] = "Уравнение неверно";
+	roots[1] = "";
+	roots[2] = "";
+	roots[3] = "";
+	return roots;
+
 }
 
 
@@ -97,18 +99,18 @@ array<String^>^ QuadraticEquationSolver::Solve(double a, double b, double c)
 		return roots;
 	}
 
-	if ((a == 0 || b == 0) && c == 0) {
+	if (a == 0 && b != 0 && c == 0) {
 		roots = FourthType();
 		return roots;
 	}
 
-	if ((a == 0 && b == 0) && c != 0) {
-		roots = FifthType();
+	if (a == 0 && b != 0 && c != 0) {
+		roots = FifthType(b, c);
 		return roots;
 	}
 
-	if (a == 0 && b != 0 && c != 0) {
-		roots = SixthType(c, b);
+	if (a == 0 && b == 0 && c != 0) {
+		roots = SixthType();
 		return roots;
 	}
 
@@ -116,12 +118,6 @@ array<String^>^ QuadraticEquationSolver::Solve(double a, double b, double c)
 
 double QuadraticEquationSolver::Function(double a, double b, double c, double x)
 {
-	double y;
-	y = a * pow(x, 2) + b * x + c;
-	return y;
-}
-
-double QuadraticEquationSolver::AltFunc(double a, double b, double c, double x) {
 	double y;
 	y = a * pow(x, 2) + b * x + c;
 	return y;
@@ -136,13 +132,12 @@ double QuadraticEquationSolver::GetPeak(double a, double b)
 array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double border, double a, double b, double c) {
 
 	double Peak = GetPeak(a, b);
-	array<String^>^ roots = gcnew array<String^>(4);
-	if (DiscriminantFinder(a, b, c) >= 0) {
-		while (true)
+	array<String^>^ roots = gcnew array<String^>(2);
+	if (DiscriminantFinder(a, b, c) > 0 && a != 0) {
+		while (Peak <= border)
 		{
-			if ( (Function(a, b, c, Peak) < 0 && Function(a, b, c, Peak + precision) > 0) || (Function(a, b, c, Peak) > 0 && Function(a, b, c, Peak + precision) < 0) ) {
-				roots[0] = Convert::ToString(Peak);
-				roots[1] = Convert::ToString(Peak + precision);
+			if ( (Function(a, b, c, Peak) <= 0 && Function(a, b, c, Peak + precision) >= 0) || (Function(a, b, c, Peak) >= 0 && Function(a, b, c, Peak + precision) <= 0) ) {
+				roots[1] = "[" + Convert::ToString(Peak) + ";" + Convert::ToString(Peak + precision) + "]";
 				break;
 			}
 			else
@@ -152,7 +147,27 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 		}
 	}
 
-	
+	Peak = GetPeak(a, b);
+	if (DiscriminantFinder(a, b, c) > 0 && a != 0) {
+		while (Peak >= -1 * border)
+		{
+			if ((Function(a, b, c, Peak) <= 0 && Function(a, b, c, Peak - precision) >= 0) || (Function(a, b, c, Peak) >= 0 && Function(a, b, c, Peak - precision) <= 0)) {
+				roots[0] = "[" + Convert::ToString(Peak) + ";" + Convert::ToString(Peak - precision) + "]";
+				break;
+			}
+			else
+			{
+				Peak = Peak - precision;
+			}
+
+		}
+	}
+
+	if(a == 0 && b == 0 && c == 0)
+	{
+		roots[0] = "[бесконечно";
+		roots[1] = " много решений]";
+	}
 
 	return roots;
 }
