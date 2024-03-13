@@ -12,8 +12,8 @@ double QuadraticEquationSolver::DiscriminantFinder(double a, double b, double c)
 array<String^>^ QuadraticEquationSolver::FirstType(double a, double b, double d)
 {
 	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = Convert::ToString(((-1 * b + sqrt(d)) / (2 * a)));
-	roots[1] = Convert::ToString((-1 * b - sqrt(d)) / (2 * a));
+	roots[0] = Convert::ToString( round(((-1 * b + sqrt(d)) / (2 * a)) * 10000)/10000);
+	roots[1] = Convert::ToString(round(((-1 * b - sqrt(d)) / (2 * a)) * 10000) / 10000);
 	roots[2] = "(" + Convert::ToString(-1 * b) + " + sqrt(" + Convert::ToString(d) + ")) / " + Convert::ToString(2 * a);
 	roots[3] = "(" + Convert::ToString(-1 * b) + " - sqrt(" + Convert::ToString(d) + ")) / " + Convert::ToString(2 * a);
 	return roots;
@@ -23,7 +23,7 @@ array<String^>^ QuadraticEquationSolver::FirstType(double a, double b, double d)
 array<String^>^ QuadraticEquationSolver::SecondType(double a, double b, double d)
 {
 	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = Convert::ToString((-1 * b) / (2 * a));
+	roots[0] = Convert::ToString( round((-1 * b) / (2 * a) * 10000) / 10000 );
 	roots[1] = "";
 	roots[2] = Convert::ToString(-1 * b) + "/" + Convert::ToString(2 * a);
 	roots[3] = "";
@@ -51,7 +51,7 @@ array<String^>^ QuadraticEquationSolver::FourthType() {
 
 array<String^>^ QuadraticEquationSolver::FifthType(double c, double b) {
 	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = Convert::ToString((-1 * c) / b);
+	roots[0] = Convert::ToString( round(((-1 * c) / b) * 10000)/10000 );
 	roots[1] = "";
 	roots[2] = Convert::ToString(-1 * c) + "/" + Convert::ToString(b);
 	roots[3] = "";
@@ -129,7 +129,7 @@ double QuadraticEquationSolver::GetPeak(double a, double b)
 	return ((-1 * b) / (2 * a));
 }
 
-array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double border, double a, double b, double c) {
+array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double border, int len, double a, double b, double c) {
 
 	double Peak = GetPeak(a, b);
 	array<String^>^ roots = gcnew array<String^>(2);
@@ -137,7 +137,7 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 		while (Peak <= border)
 		{
 			if ( (Function(a, b, c, Peak) <= 0 && Function(a, b, c, Peak + precision) >= 0) || (Function(a, b, c, Peak) >= 0 && Function(a, b, c, Peak + precision) <= 0) ) {
-				roots[1] = "[" + Convert::ToString(Peak) + ";" + Convert::ToString(Peak + precision) + "]";
+				roots[1] = "[" + Convert::ToString(round(Peak*pow(10, len))/pow(10, len)) + ";" + Convert::ToString(round((Peak + precision)* pow(10, len)) / pow(10, len)) + "]";
 				break;
 			}
 			else
@@ -152,7 +152,7 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 		while (Peak >= -1 * border)
 		{
 			if ((Function(a, b, c, Peak) <= 0 && Function(a, b, c, Peak - precision) >= 0) || (Function(a, b, c, Peak) >= 0 && Function(a, b, c, Peak - precision) <= 0)) {
-				roots[0] = "[" + Convert::ToString(Peak) + ";" + Convert::ToString(Peak - precision) + "]";
+				roots[0] = "[" + Convert::ToString(round(Peak * pow(10, len)) / pow(10, len)) + ";" + Convert::ToString(round((Peak - precision) * pow(10, len)) / pow(10, len)) + "]";
 				break;
 			}
 			else
@@ -167,6 +167,10 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 	{
 		roots[0] = "[бесконечно";
 		roots[1] = " много решений]";
+	}
+	if (DiscriminantFinder(a, b, c) < 0) {
+		roots[0] = "Ќет ";
+		roots[1] = "корней";
 	}
 
 	return roots;

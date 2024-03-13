@@ -258,6 +258,7 @@ namespace Reshala {
 			// 
 			// FunctionVizualizer
 			// 
+			chartArea1->AxisX->LabelStyle->Format = L"{0:0.00}";
 			chartArea1->Name = L"ChartArea1";
 			this->FunctionVizualizer->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
@@ -297,9 +298,9 @@ namespace Reshala {
 				static_cast<System::Byte>(204)));
 			this->label2->Location = System::Drawing::Point(8, 44);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(276, 24);
+			this->label2->Size = System::Drawing::Size(287, 24);
 			this->label2->TabIndex = 14;
-			this->label2->Text = L"Введите коэффиценты при x:";
+			this->label2->Text = L"Введите коэффициенты при x:";
 			// 
 			// label3
 			// 
@@ -329,6 +330,7 @@ namespace Reshala {
 			this->precisionbox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->precisionbox->Location = System::Drawing::Point(12, 529);
+			this->precisionbox->MaxLength = 5;
 			this->precisionbox->Name = L"precisionbox";
 			this->precisionbox->Size = System::Drawing::Size(171, 26);
 			this->precisionbox->TabIndex = 17;
@@ -409,6 +411,7 @@ namespace Reshala {
 		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 		if (e->KeyChar == '-') { return; }
 		if (e->KeyChar == ',') { return; }
+		if (e->KeyChar == '.') { return; }
 		if (e->KeyChar == 8) { return; }
 		e->Handled = true;
 	}
@@ -416,6 +419,7 @@ namespace Reshala {
 		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 		if (e->KeyChar == '-') { return; }
 		if (e->KeyChar == ',') { return; }
+		if (e->KeyChar == '.') { return; }
 		if (e->KeyChar == 8) { return; }
 		e->Handled = true;
 	}
@@ -423,12 +427,14 @@ namespace Reshala {
 		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 		if (e->KeyChar == '-') { return; }
 		if (e->KeyChar == ',') { return; }
+		if (e->KeyChar == '.') { return; }
 		if (e->KeyChar == 8) { return; }
 		e->Handled = true;
 	}
 	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 		if (e->KeyChar == ',') { return; }
+		if (e->KeyChar == '.') { return; }
 		if (e->KeyChar == 8) { return; }
 		e->Handled = true;
 	}
@@ -514,7 +520,7 @@ namespace Reshala {
 
 		//оси
 		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak + LeftBorder));
-		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak)-3);
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak)+(2*a/-a));
 		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
 		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
 
@@ -525,7 +531,14 @@ namespace Reshala {
 
 		//метод подбора
 
-		RootsSelection = solver->SolveSelection(pr, RightBorder, a, b, c);
+		int RoundLen = precisionbox->TextLength;
+		if (precisionbox->Text->Contains(",")) {
+			RoundLen = RoundLen - 1;
+		}
+		if (precisionbox->Text == "") {
+			RoundLen = 1;
+		}
+		RootsSelection = solver->SolveSelection(pr, RightBorder, RoundLen, a, b, c);
 		SelectedRoots->Text = RootsSelection[0] + " " + RootsSelection[1];
 
 
