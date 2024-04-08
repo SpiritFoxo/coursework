@@ -62,27 +62,8 @@ namespace Reshala {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ SelectedRoots;
-	public:
-
-	public:
-
-	public:
-	private:
-
-	private:
 
 
-
-	protected:
-
-
-
-
-
-
-	protected:
-
-	protected:
 
 	private:
 		/// <summary>
@@ -406,7 +387,7 @@ namespace Reshala {
 #pragma endregion
 
 
-		//Маска для вводимого текста
+	//Маска для вводимого текста
 	private: System::Void FirstKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 		if (e->KeyChar == '-') { return; }
@@ -444,6 +425,8 @@ namespace Reshala {
 	private: System::Void SolveButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		double a, b, c, pr;
+		int Minuscounter = 0;
+		int Commacounter = 0;
 
 		//если поле пусто или равно 0, то точность подбора будет равна 1
 		if (precisionbox->Text == "" || precisionbox->Text == "0") {
@@ -453,6 +436,85 @@ namespace Reshala {
 		{
 			pr = Convert::ToDouble(precisionbox->Text);
 		}
+
+		//жесткая замена двух и более минусов и запятых
+		for (int i = 0; i < FirstKTB->Text->Length; i++) {
+			
+			if (FirstKTB->Text[i] == Convert::ToChar("-")) {
+				Minuscounter++;
+				if (Minuscounter > 1) {
+					FirstKTB->Text = "-" + FirstKTB->Text->Replace("-", "");
+				}
+				
+			}
+			if (FirstKTB->Text[i] == Convert::ToChar(",") || FirstKTB->Text[i] == Convert::ToChar(".")) {
+				Commacounter++;
+				if (Commacounter > 1) {
+					FirstKTB->Text = FirstKTB->Text->Replace(",", "");
+					FirstKTB->Text = FirstKTB->Text->Replace(".", "");
+				}
+			}
+		}
+
+		Minuscounter = 0;
+		Commacounter = 0;
+
+		for (int i = 0; i < SecondKTB->Text->Length; i++) {
+
+			if (SecondKTB->Text[i] == Convert::ToChar("-")) {
+				Minuscounter++;
+				if (Minuscounter > 1) {
+					SecondKTB->Text = "-" + SecondKTB->Text->Replace("-", "");
+				}
+
+			}
+			if (SecondKTB->Text[i] == Convert::ToChar(",") || SecondKTB->Text[i] == Convert::ToChar(".")) {
+				Commacounter++;
+				if (Commacounter > 1) {
+					SecondKTB->Text = SecondKTB->Text->Replace(",", "");
+					SecondKTB->Text = SecondKTB->Text->Replace(".", "");
+				}
+			}
+		
+		}
+
+		Minuscounter = 0;
+		Commacounter = 0;
+
+		for (int i = 0; i < ThirdKTB->Text->Length; i++) {
+
+			if (ThirdKTB->Text[i] == Convert::ToChar("-")) {
+				Minuscounter++;
+				if (Minuscounter > 1) {
+					ThirdKTB->Text = "-" + ThirdKTB->Text->Replace("-", "");
+				}
+
+			}
+			if (ThirdKTB->Text[i] == Convert::ToChar(",") || ThirdKTB->Text[i] == Convert::ToChar(".")) {
+				Commacounter++;
+				if (Commacounter > 1) {
+					ThirdKTB->Text = ThirdKTB->Text->Replace(",", "");
+					ThirdKTB->Text = ThirdKTB->Text->Replace(".", "");
+				}
+			}
+			
+		}
+
+		Minuscounter = 0;
+		Commacounter = 0;
+
+		for (int i = 0; i < precisionbox->Text->Length; i++) {
+			if (precisionbox->Text[i] == Convert::ToChar(",") || ThirdKTB->Text[i] == Convert::ToChar(".")) {
+				Commacounter++;
+				if (Commacounter > 1) {
+					precisionbox->Text = precisionbox->Text->Replace(",", "");
+					precisionbox->Text = precisionbox->Text->Replace(".", "");
+				}
+			}
+
+		}
+		Minuscounter = 0;
+		Commacounter = 0;
 
 		//Если поля пусты автоматически присваивается значение 0
 		if (FirstKTB->Text == "") {
@@ -477,6 +539,8 @@ namespace Reshala {
 			c = Convert::ToDouble(ThirdKTB->Text);
 		}
 
+		
+
 
 		//объявление переменных для хранения корней и класса решения
 		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver;
@@ -490,7 +554,7 @@ namespace Reshala {
 		SecondRoot->Text = Roots[1];
 		SecondRootAlt->Text = Roots[3];
 
-	//график
+		//график
 		double LeftBorder;
 		double RightBorder;
 		double Peak = 0;
