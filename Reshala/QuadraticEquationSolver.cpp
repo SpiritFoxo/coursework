@@ -79,8 +79,6 @@ array<String^>^ QuadraticEquationSolver::SixthType() {
 
 array<String^>^ QuadraticEquationSolver::Solve()
 {
-	double d;
-	d = DiscriminantFinder();
 	array<String^>^ roots = gcnew array<String^>(4);
 
 	if (a != 0) {
@@ -140,7 +138,7 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 
 	double Peak = GetPeak();
 	array<String^>^ roots = gcnew array<String^>(2);
-	if (DiscriminantFinder() > 0 && a != 0) {
+	if (d > 0 && a != 0) {
 		while (Peak <= border)
 		{
 			if ( (Function(Peak) <= 0 && Function(Peak + precision) >= 0) || (Function(Peak) >= 0 && Function(Peak + precision) <= 0) ) {
@@ -155,7 +153,7 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 	}
 
 	Peak = GetPeak();
-	if (DiscriminantFinder() > 0 && a != 0) {
+	if (d > 0 && a != 0) {
 		while (Peak >= -1 * border)
 		{
 			if ((Function(Peak) <= 0 && Function(Peak - precision) >= 0) || (Function(Peak) >= 0 && Function(Peak - precision) <= 0)) {
@@ -175,7 +173,7 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 		roots[0] = "[бесконечно";
 		roots[1] = " много решений]";
 	}
-	if (DiscriminantFinder() < 0) {
+	if (d < 0) {
 		roots[0] = "Нет ";
 		roots[1] = "корней";
 	}
