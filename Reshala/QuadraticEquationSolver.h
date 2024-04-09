@@ -5,19 +5,21 @@ using namespace System;
 ref class QuadraticEquationSolver
 {
 public:
-	array<String^>^ Solve(double a, double b, double c);
-	double Function(double a, double b, double c, double x);
-	double GetPeak(double a, double b);
-	array<String^>^ SolveSelection(double precision, double border, int len, double a, double b, double c);
+	QuadraticEquationSolver(double a, double b, double c);
+	array<String^>^ Solve();
+	double Function(double x);
+	double GetPeak();
+	array<String^>^ SolveSelection(double precision, double border, int len);
 	
 private:
-	array<String^>^ FirstType(double a, double b, double d);
-	array<String^>^ SecondType(double a, double b, double d);
+	double a, b, c, d;
+	array<String^>^ FirstType();
+	array<String^>^ SecondType();
 	array<String^>^ ThirdType();
 	array<String^>^ FourthType();
-	array<String^>^ FifthType(double c, double b);
+	array<String^>^ FifthType();
 	array<String^>^ SixthType();
-	double DiscriminantFinder(double a, double b, double c);
+	double DiscriminantFinder();
 
 };
 

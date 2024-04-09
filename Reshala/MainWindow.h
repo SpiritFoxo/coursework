@@ -515,10 +515,10 @@ namespace Reshala {
 
 
 		//объявление переменных для хранения корней и класса решения
-		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver;
+		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver(a, b, c);
 		array<String^>^ Roots = gcnew array<String^>(4);
 		array<String^>^ RootsSelection = gcnew array<String^>(2);
-		Roots = solver->Solve(a, b, c);
+		Roots = solver->Solve();
 
 		//Изменение текста для вывода корней
 		FirstRoot->Text = Roots[0];
@@ -531,7 +531,7 @@ namespace Reshala {
 		double RightBorder;
 		double Peak = 0;
 		if (a != 0) {
-			Peak = solver->GetPeak(a, b);
+			Peak = solver->GetPeak();
 		}
 
 		//очистка графика от предыдущих решений
@@ -555,14 +555,14 @@ namespace Reshala {
 		}
 
 		//оси
-		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak + LeftBorder));
-		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak)+(2*a/-a));
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(Peak + LeftBorder));
+		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(Peak)+(2*a/-a));
 		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
 		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
 
 		//сам график
 		for (double i = (Peak + LeftBorder); i <= (Peak + RightBorder); i = i + 1) {
-			FunctionVizualizer->Series[0]->Points->AddXY(i, solver->Function(a, b, c, i));
+			FunctionVizualizer->Series[0]->Points->AddXY(i, solver->Function(i));
 		}
 
 		//метод подбора
@@ -574,7 +574,7 @@ namespace Reshala {
 		if (precisionbox->Text == "") {
 			RoundLen = 1;
 		}
-		RootsSelection = solver->SolveSelection(pr, RightBorder, RoundLen, a, b, c);
+		RootsSelection = solver->SolveSelection(pr, RightBorder, RoundLen);
 		SelectedRoots->Text = RootsSelection[0] + " " + RootsSelection[1];
 
 
