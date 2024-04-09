@@ -1,4 +1,4 @@
-#include "QuadraticEquationSolver.h"
+п»ї#include "QuadraticEquationSolver.h"
 
 
 double QuadraticEquationSolver::DiscriminantFinder(double a, double b, double c)
@@ -32,9 +32,9 @@ array<String^>^ QuadraticEquationSolver::SecondType(double a, double b, double d
 
 array<String^>^ QuadraticEquationSolver::ThirdType() {
 	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = "Уравнение верно при любом x";
+	roots[0] = "РЈСЂР°РІРЅРµРЅРёРµ РІРµСЂРЅРѕ РїСЂРё Р»СЋР±РѕРј x";
 	roots[1] = "";
-	roots[2] = "Уравнение верно при любом x";
+	roots[2] = "РЈСЂР°РІРЅРµРЅРёРµ РІРµСЂРЅРѕ РїСЂРё Р»СЋР±РѕРј x";
 	roots[3] = "";
 	return roots;
 }
@@ -60,7 +60,7 @@ array<String^>^ QuadraticEquationSolver::FifthType(double c, double b) {
 
 array<String^>^ QuadraticEquationSolver::SixthType() {
 	array<String^>^ roots = gcnew array<String^>(4);
-	roots[0] = "Уравнение неверно";
+	roots[0] = "РЈСЂР°РІРЅРµРЅРёРµ РЅРµРІРµСЂРЅРѕ";
 	roots[1] = "";
 	roots[2] = "";
 	roots[3] = "";
@@ -85,10 +85,10 @@ array<String^>^ QuadraticEquationSolver::Solve(double a, double b, double c)
 			roots = SecondType(a, b, d);
 		}
 		if (d < 0) {
-			roots[0] = "Корней нет";
-			roots[1] = "Корней нет";
-			roots[2] = "Корней нет";
-			roots[3] = "Корней нет";
+			roots[0] = "РљРѕСЂРЅРµР№ РЅРµС‚";
+			roots[1] = "РљРѕСЂРЅРµР№ РЅРµС‚";
+			roots[2] = "РљРѕСЂРЅРµР№ РЅРµС‚";
+			roots[3] = "РљРѕСЂРЅРµР№ РЅРµС‚";
 		}
 
 		return roots;
@@ -165,12 +165,12 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 
 	if(a == 0 && b == 0 && c == 0)
 	{
-		roots[0] = "[бесконечно";
-		roots[1] = " много решений]";
+		roots[0] = "[Р±РµСЃРєРѕРЅРµС‡РЅРѕ";
+		roots[1] = " РјРЅРѕРіРѕ СЂРµС€РµРЅРёР№]";
 	}
 	if (DiscriminantFinder(a, b, c) < 0) {
-		roots[0] = "Нет ";
-		roots[1] = "корней";
+		roots[0] = "РќРµС‚ ";
+		roots[1] = "РєРѕСЂРЅРµР№";
 	}
 
 	return roots;

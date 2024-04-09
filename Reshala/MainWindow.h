@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "QuadraticEquationSolver.h"
 #include "HelpWindow.h"
 
@@ -12,7 +12,7 @@ namespace Reshala {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для MainWindow
+	/// РЎРІРѕРґРєР° РґР»СЏ MainWindow
 	/// </summary>
 	public ref class MainWindow : public System::Windows::Forms::Form
 	{
@@ -21,13 +21,13 @@ namespace Reshala {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~MainWindow()
 		{
@@ -67,14 +67,14 @@ namespace Reshala {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -167,7 +167,7 @@ namespace Reshala {
 			this->SolveButton->Name = L"SolveButton";
 			this->SolveButton->Size = System::Drawing::Size(123, 46);
 			this->SolveButton->TabIndex = 6;
-			this->SolveButton->Text = L"Решить";
+			this->SolveButton->Text = L"Р РµС€РёС‚СЊ";
 			this->SolveButton->UseVisualStyleBackColor = true;
 			this->SolveButton->Click += gcnew System::EventHandler(this, &MainWindow::SolveButton_Click);
 			// 
@@ -180,7 +180,7 @@ namespace Reshala {
 			this->RootTextLabel->Name = L"RootTextLabel";
 			this->RootTextLabel->Size = System::Drawing::Size(171, 24);
 			this->RootTextLabel->TabIndex = 7;
-			this->RootTextLabel->Text = L"Корни уравнения:";
+			this->RootTextLabel->Text = L"РљРѕСЂРЅРё СѓСЂР°РІРЅРµРЅРёСЏ:";
 			// 
 			// FirstRoot
 			// 
@@ -213,7 +213,7 @@ namespace Reshala {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(208, 24);
 			this->label1->TabIndex = 10;
-			this->label1->Text = L"Альтернативный вид:";
+			this->label1->Text = L"РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹Р№ РІРёРґ:";
 			// 
 			// SecondRootAlt
 			// 
@@ -281,7 +281,7 @@ namespace Reshala {
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(287, 24);
 			this->label2->TabIndex = 14;
-			this->label2->Text = L"Введите коэффициенты при x:";
+			this->label2->Text = L"Р’РІРµРґРёС‚Рµ РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ РїСЂРё x:";
 			// 
 			// label3
 			// 
@@ -292,7 +292,7 @@ namespace Reshala {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(165, 24);
 			this->label3->TabIndex = 15;
-			this->label3->Text = L"Поиск подбором:";
+			this->label3->Text = L"РџРѕРёСЃРє РїРѕРґР±РѕСЂРѕРј:";
 			// 
 			// HelpButton
 			// 
@@ -302,7 +302,7 @@ namespace Reshala {
 			this->HelpButton->Name = L"HelpButton";
 			this->HelpButton->Size = System::Drawing::Size(221, 46);
 			this->HelpButton->TabIndex = 16;
-			this->HelpButton->Text = L"Справка";
+			this->HelpButton->Text = L"РЎРїСЂР°РІРєР°";
 			this->HelpButton->UseVisualStyleBackColor = true;
 			this->HelpButton->Click += gcnew System::EventHandler(this, &MainWindow::HelpButton_Click);
 			// 
@@ -326,7 +326,7 @@ namespace Reshala {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(149, 20);
 			this->label4->TabIndex = 18;
-			this->label4->Text = L"точность подбора";
+			this->label4->Text = L"С‚РѕС‡РЅРѕСЃС‚СЊ РїРѕРґР±РѕСЂР°";
 			// 
 			// label5
 			// 
@@ -337,7 +337,7 @@ namespace Reshala {
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(251, 20);
 			this->label5->TabIndex = 19;
-			this->label5->Text = L"Корни находятся в промежутке:";
+			this->label5->Text = L"РљРѕСЂРЅРё РЅР°С…РѕРґСЏС‚СЃСЏ РІ РїСЂРѕРјРµР¶СѓС‚РєРµ:";
 			// 
 			// SelectedRoots
 			// 
@@ -378,7 +378,7 @@ namespace Reshala {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MainWindow";
-			this->Text = L"Решала";
+			this->Text = L"Р РµС€Р°Р»Р°";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FunctionVizualizer))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -387,7 +387,7 @@ namespace Reshala {
 #pragma endregion
 
 
-	//Маска для вводимого текста
+	//РњР°СЃРєР° РґР»СЏ РІРІРѕРґРёРјРѕРіРѕ С‚РµРєСЃС‚Р°
 	private: System::Void FirstKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 		if (e->KeyChar == '-') { return; }
@@ -421,14 +421,14 @@ namespace Reshala {
 	}
 
 
-	//Обработчик конпки
+	//РћР±СЂР°Р±РѕС‚С‡РёРє РєРѕРЅРїРєРё
 	private: System::Void SolveButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		double a, b, c, pr;
 		int Minuscounter = 0;
 		int Commacounter = 0;
 
-		//если поле пусто или равно 0, то точность подбора будет равна 1
+		//РµСЃР»Рё РїРѕР»Рµ РїСѓСЃС‚Рѕ РёР»Рё СЂР°РІРЅРѕ 0, С‚Рѕ С‚РѕС‡РЅРѕСЃС‚СЊ РїРѕРґР±РѕСЂР° Р±СѓРґРµС‚ СЂР°РІРЅР° 1
 		if (precisionbox->Text == "" || precisionbox->Text == "0") {
 			pr = 1;
 		}
@@ -437,7 +437,7 @@ namespace Reshala {
 			pr = Convert::ToDouble(precisionbox->Text);
 		}
 
-		//жесткая замена двух и более минусов и запятых
+		//Р¶РµСЃС‚РєР°СЏ Р·Р°РјРµРЅР° РґРІСѓС… Рё Р±РѕР»РµРµ РјРёРЅСѓСЃРѕРІ Рё Р·Р°РїСЏС‚С‹С…
 		for (int i = 0; i < FirstKTB->Text->Length; i++) {
 			
 			if (FirstKTB->Text[i] == Convert::ToChar("-")) {
@@ -516,7 +516,7 @@ namespace Reshala {
 		Minuscounter = 0;
 		Commacounter = 0;
 
-		//Если поля пусты автоматически присваивается значение 0
+		//Р•СЃР»Рё РїРѕР»СЏ РїСѓСЃС‚С‹ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ Р·РЅР°С‡РµРЅРёРµ 0
 		if (FirstKTB->Text == "") {
 			a = 0;
 		}
@@ -542,19 +542,19 @@ namespace Reshala {
 		
 
 
-		//объявление переменных для хранения корней и класса решения
+		//РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С… РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РєРѕСЂРЅРµР№ Рё РєР»Р°СЃСЃР° СЂРµС€РµРЅРёСЏ
 		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver;
 		array<String^>^ Roots = gcnew array<String^>(4);
 		array<String^>^ RootsSelection = gcnew array<String^>(2);
 		Roots = solver->Solve(a, b, c);
 
-		//Изменение текста для вывода корней
+		//РР·РјРµРЅРµРЅРёРµ С‚РµРєСЃС‚Р° РґР»СЏ РІС‹РІРѕРґР° РєРѕСЂРЅРµР№
 		FirstRoot->Text = Roots[0];
 		FirstRootAlt->Text = Roots[2];
 		SecondRoot->Text = Roots[1];
 		SecondRootAlt->Text = Roots[3];
 
-		//график
+		//РіСЂР°С„РёРє
 		double LeftBorder;
 		double RightBorder;
 		double Peak = 0;
@@ -562,12 +562,12 @@ namespace Reshala {
 			Peak = solver->GetPeak(a, b);
 		}
 
-		//очистка графика от предыдущих решений
+		//РѕС‡РёСЃС‚РєР° РіСЂР°С„РёРєР° РѕС‚ РїСЂРµРґС‹РґСѓС‰РёС… СЂРµС€РµРЅРёР№
 		FunctionVizualizer->Series[0]->Points->Clear();
 		FunctionVizualizer->Series[1]->Points->Clear();
 		FunctionVizualizer->Series[2]->Points->Clear();
 
-		//границы рисования графика
+		//РіСЂР°РЅРёС†С‹ СЂРёСЃРѕРІР°РЅРёСЏ РіСЂР°С„РёРєР°
 		LeftBorder = c * -2;
 		if (LeftBorder > 0) {
 			RightBorder = LeftBorder;
@@ -582,18 +582,18 @@ namespace Reshala {
 			LeftBorder = -5;
 		}
 
-		//оси
+		//РѕСЃРё
 		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak + LeftBorder));
 		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(a, b, c, Peak)+(2*a/-a));
 		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
 		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
 
-		//сам график
+		//СЃР°Рј РіСЂР°С„РёРє
 		for (double i = (Peak + LeftBorder); i <= (Peak + RightBorder); i = i + 1) {
 			FunctionVizualizer->Series[0]->Points->AddXY(i, solver->Function(a, b, c, i));
 		}
 
-		//метод подбора
+		//РјРµС‚РѕРґ РїРѕРґР±РѕСЂР°
 
 		int RoundLen = precisionbox->TextLength;
 		if (precisionbox->Text->Contains(",")) {
@@ -606,7 +606,7 @@ namespace Reshala {
 		SelectedRoots->Text = RootsSelection[0] + " " + RootsSelection[1];
 
 
-		//очистка памяти от экземпляра класса и массивов
+		//РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё РѕС‚ СЌРєР·РµРјРїР»СЏСЂР° РєР»Р°СЃСЃР° Рё РјР°СЃСЃРёРІРѕРІ
 		delete Roots;
 		delete RootsSelection;
 		delete solver;
@@ -614,7 +614,7 @@ namespace Reshala {
 	}
 
 
-	 //открытие окна помощи
+	 //РѕС‚РєСЂС‹С‚РёРµ РѕРєРЅР° РїРѕРјРѕС‰Рё
 	private: System::Void HelpButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		HelpWindow^ hw = gcnew HelpWindow;
 		hw->Show();
