@@ -6,6 +6,7 @@ namespace Reshala {
 
 	using namespace System;
 	using namespace System::ComponentModel;
+	using namespace System::Text::RegularExpressions;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
@@ -388,36 +389,86 @@ namespace Reshala {
 
 
 	//Маска для вводимого текста
+	//работает хреново
 	private: System::Void FirstKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
-		if (e->KeyChar == '-') { return; }
-		if (e->KeyChar == ',') { return; }
-		if (e->KeyChar == '.') { return; }
-		if (e->KeyChar == 8) { return; }
-		e->Handled = true;
+		
+		//запрет на ввод запятой в начале
+		if (FirstKTB->TextLength == 0) {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == '-') { return; }
+			e->Handled = true;
+		}
+		//поддержка лишь одной запятой
+		if (FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false && FirstKTB->Text->Contains(".") == false) {
+			if (e->KeyChar == ',') { return; }
+			if (e->KeyChar == '.') { return; }
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
+		else {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
 	}
 	private: System::Void SecondKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
-		if (e->KeyChar == '-') { return; }
-		if (e->KeyChar == ',') { return; }
-		if (e->KeyChar == '.') { return; }
-		if (e->KeyChar == 8) { return; }
-		e->Handled = true;
+		//запрет на ввод запятой в начале
+		if (SecondKTB->TextLength == 0) {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == '-') { return; }
+			e->Handled = true;
+		}
+		//поддержка лишь одной запятой
+		if (SecondKTB->TextLength > 0 && SecondKTB->Text->Contains(",") == false && SecondKTB->Text->Contains(".") == false) {
+			if (e->KeyChar == ',') { return; }
+			if (e->KeyChar == '.') { return; }
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
+		else {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
 	}
 	private: System::Void ThirdKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
-		if (e->KeyChar == '-') { return; }
-		if (e->KeyChar == ',') { return; }
-		if (e->KeyChar == '.') { return; }
-		if (e->KeyChar == 8) { return; }
-		e->Handled = true;
+		//запрет на ввод запятой в начале
+		if (ThirdKTB->TextLength == 0) {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == '-') { return; }
+			e->Handled = true;
+		}
+		//поддержка лишь одной запятой
+		if (ThirdKTB->TextLength > 0 && ThirdKTB->Text->Contains(",") == false && ThirdKTB->Text->Contains(".") == false) {
+			if (e->KeyChar == ',') { return; }
+			if (e->KeyChar == '.') { return; }
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
+		else {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
 	}
 	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
-		if (e->KeyChar == ',') { return; }
-		if (e->KeyChar == '.') { return; }
-		if (e->KeyChar == 8) { return; }
-		e->Handled = true;
+
+		//поддержка лишь одной запятой
+		if (precisionbox->TextLength > 0 && precisionbox->Text->Contains(",") == false && precisionbox->Text->Contains(".") == false) {
+			if (e->KeyChar == ',') { return; }
+			if (e->KeyChar == '.') { return; }
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
+		else {
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			e->Handled = true;
+		}
 	}
 
 
@@ -436,85 +487,6 @@ namespace Reshala {
 		{
 			pr = Convert::ToDouble(precisionbox->Text);
 		}
-
-		//жесткая замена двух и более минусов и запятых
-		for (int i = 0; i < FirstKTB->Text->Length; i++) {
-			
-			if (FirstKTB->Text[i] == Convert::ToChar("-")) {
-				Minuscounter++;
-				if (Minuscounter > 1) {
-					FirstKTB->Text = "-" + FirstKTB->Text->Replace("-", "");
-				}
-				
-			}
-			if (FirstKTB->Text[i] == Convert::ToChar(",") || FirstKTB->Text[i] == Convert::ToChar(".")) {
-				Commacounter++;
-				if (Commacounter > 1) {
-					FirstKTB->Text = FirstKTB->Text->Replace(",", "");
-					FirstKTB->Text = FirstKTB->Text->Replace(".", "");
-				}
-			}
-		}
-
-		Minuscounter = 0;
-		Commacounter = 0;
-
-		for (int i = 0; i < SecondKTB->Text->Length; i++) {
-
-			if (SecondKTB->Text[i] == Convert::ToChar("-")) {
-				Minuscounter++;
-				if (Minuscounter > 1) {
-					SecondKTB->Text = "-" + SecondKTB->Text->Replace("-", "");
-				}
-
-			}
-			if (SecondKTB->Text[i] == Convert::ToChar(",") || SecondKTB->Text[i] == Convert::ToChar(".")) {
-				Commacounter++;
-				if (Commacounter > 1) {
-					SecondKTB->Text = SecondKTB->Text->Replace(",", "");
-					SecondKTB->Text = SecondKTB->Text->Replace(".", "");
-				}
-			}
-		
-		}
-
-		Minuscounter = 0;
-		Commacounter = 0;
-
-		for (int i = 0; i < ThirdKTB->Text->Length; i++) {
-
-			if (ThirdKTB->Text[i] == Convert::ToChar("-")) {
-				Minuscounter++;
-				if (Minuscounter > 1) {
-					ThirdKTB->Text = "-" + ThirdKTB->Text->Replace("-", "");
-				}
-
-			}
-			if (ThirdKTB->Text[i] == Convert::ToChar(",") || ThirdKTB->Text[i] == Convert::ToChar(".")) {
-				Commacounter++;
-				if (Commacounter > 1) {
-					ThirdKTB->Text = ThirdKTB->Text->Replace(",", "");
-					ThirdKTB->Text = ThirdKTB->Text->Replace(".", "");
-				}
-			}
-			
-		}
-
-		Minuscounter = 0;
-		Commacounter = 0;
-
-		for (int i = 0; i < precisionbox->Text->Length; i++) {
-			if (precisionbox->Text[i] == Convert::ToChar(",") || ThirdKTB->Text[i] == Convert::ToChar(".")) {
-				Commacounter++;
-				if (Commacounter > 1) {
-					precisionbox->Text = precisionbox->Text->Replace(",", "");
-					precisionbox->Text = precisionbox->Text->Replace(".", "");
-				}
-			}
-
-		}
-		Minuscounter = 0;
-		Commacounter = 0;
 
 		//Если поля пусты автоматически присваивается значение 0
 		if (FirstKTB->Text == "") {
