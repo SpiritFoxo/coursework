@@ -396,21 +396,31 @@ namespace Reshala {
 		if (FirstKTB->TextLength == 0) {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == '-') { return; }
-			e->Handled = true;
 		}
 		//поддержка лишь одной запятой
 		if (FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false && FirstKTB->Text->Contains(".") == false) {
 			if (e->KeyChar == ',') { return; }
-			if (e->KeyChar == '.') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			e->Handled = true;
+
 		}
+		if (FirstKTB->Text->Contains("-") == false && FirstKTB->TextLength > 0) {
+			if (e->KeyChar == ',') { return; }
+			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+			if (e->KeyChar == '-') {
+				String^ c = FirstKTB->Text;
+				FirstKTB->Text = c->Replace("-", "");
+				return; 
+			}
+		}
+
 		else {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			e->Handled = true;
 		}
+
+		e->Handled = true;
 	}
 	private: System::Void SecondKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		//запрет на ввод запятой в начале
