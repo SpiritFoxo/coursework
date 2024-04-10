@@ -572,8 +572,6 @@ namespace Reshala {
 	private: System::Void SolveButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		double a, b, c, pr;
-		int Minuscounter = 0;
-		int Commacounter = 0;
 
 		//если поле пусто или равно 0, то точность подбора будет равна 1
 		if (precisionbox->Text == "" || precisionbox->Text == "0") {
@@ -675,9 +673,7 @@ namespace Reshala {
 
 
 		//очистка памяти от экземпляра класса и массивов
-		delete Roots;
-		delete RootsSelection;
-		delete solver;
+		delete Roots, RootsSelection, solver;
 
 	}
 
