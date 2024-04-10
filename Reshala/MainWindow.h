@@ -389,7 +389,6 @@ namespace Reshala {
 
 
 	//Маска для вводимого текста
-	//работает хреново
 	private: System::Void FirstKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		
 		bool isMinusHandled = false;
@@ -399,12 +398,19 @@ namespace Reshala {
 			if (e->KeyChar == '-') { return; }
 		}
 		//поддержка лишь одной запятой
-		if (FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false && FirstKTB->Text->Contains(".") == false) {
-			if (e->KeyChar == ',') { return; }
-			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
-			if (e->KeyChar == 8) { return; }
-
+		if (FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false) {
+			if (FirstKTB->TextLength == 1 && FirstKTB->Text->Contains("-") == true) {
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
+			}
+			else {
+				if (e->KeyChar == ',') { return; }
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
+			}
 		}
+		
+
 		if (FirstKTB->Text->Contains("-") == false && FirstKTB->TextLength > 0) {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
@@ -433,53 +439,105 @@ namespace Reshala {
 		e->Handled = true;
 	}
 	private: System::Void SecondKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		bool isMinusHandled = false;
 		//запрет на ввод запятой в начале
 		if (SecondKTB->TextLength == 0) {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == '-') { return; }
-			e->Handled = true;
 		}
 		//поддержка лишь одной запятой
-		if (SecondKTB->TextLength > 0 && SecondKTB->Text->Contains(",") == false && SecondKTB->Text->Contains(".") == false) {
+		if (SecondKTB->TextLength > 0 && SecondKTB->Text->Contains(",") == false) {
+			if (SecondKTB->TextLength == 1 && SecondKTB->Text->Contains("-") == true) {
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
+			}
+			else {
+				if (e->KeyChar == ',') { return; }
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
+			}
+		}
+
+		if (SecondKTB->Text->Contains("-") == false && SecondKTB->TextLength > 0) {
 			if (e->KeyChar == ',') { return; }
-			if (e->KeyChar == '.') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			e->Handled = true;
+			if (e->KeyChar == '-')
+			{
+				if (!isMinusHandled)
+				{
+					String^ c = SecondKTB->Text;
+					SecondKTB->Text = "-" + c->Replace("-", "");
+					isMinusHandled = true;
+				}
+				e->Handled = true;
+			}
+			else
+			{
+				isMinusHandled = false;
+			}
 		}
+
 		else {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			e->Handled = true;
 		}
+
+		e->Handled = true;
 	}
 	private: System::Void ThirdKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		//запрет на ввод запятой в начале
+		bool isMinusHandled = false;
 		//запрет на ввод запятой в начале
 		if (ThirdKTB->TextLength == 0) {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == '-') { return; }
-			e->Handled = true;
 		}
 		//поддержка лишь одной запятой
-		if (ThirdKTB->TextLength > 0 && ThirdKTB->Text->Contains(",") == false && ThirdKTB->Text->Contains(".") == false) {
+		if (ThirdKTB->TextLength > 0 && ThirdKTB->Text->Contains(",") == false) {
+			if (ThirdKTB->TextLength == 1 && ThirdKTB->Text->Contains("-") == true) {
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
+			}
+			else {
+				if (e->KeyChar == ',') { return; }
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
+			}
+		}
+
+		if (ThirdKTB->Text->Contains("-") == false && ThirdKTB->TextLength > 0) {
 			if (e->KeyChar == ',') { return; }
-			if (e->KeyChar == '.') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			e->Handled = true;
+			if (e->KeyChar == '-')
+			{
+				if (!isMinusHandled)
+				{
+					String^ c = ThirdKTB->Text;
+					ThirdKTB->Text = "-" + c->Replace("-", "");
+					isMinusHandled = true;
+				}
+				e->Handled = true;
+			}
+			else
+			{
+				isMinusHandled = false;
+			}
 		}
+
 		else {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			e->Handled = true;
 		}
+
+		e->Handled = true;
 	}
 	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 
 		//поддержка лишь одной запятой
-		if (precisionbox->TextLength > 0 && precisionbox->Text->Contains(",") == false && precisionbox->Text->Contains(".") == false) {
+		if (precisionbox->TextLength > 0 && precisionbox->Text->Contains(",") == false) {
 			if (e->KeyChar == ',') { return; }
-			if (e->KeyChar == '.') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
 			e->Handled = true;
