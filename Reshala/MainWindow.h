@@ -684,6 +684,7 @@ namespace Reshala {
 		hw->Show();
 	}
 	
+//очистка текстбоксов
 private: System::Void ClearButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	FirstKTB->Text = "";
 	SecondKTB->Text = "";
