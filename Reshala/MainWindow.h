@@ -392,6 +392,7 @@ namespace Reshala {
 	//работает хреново
 	private: System::Void FirstKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		
+		bool isMinusHandled = false;
 		//запрет на ввод запятой в начале
 		if (FirstKTB->TextLength == 0) {
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
@@ -408,10 +409,19 @@ namespace Reshala {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
-			if (e->KeyChar == '-') {
-				String^ c = FirstKTB->Text;
-				FirstKTB->Text = c->Replace("-", "");
-				return; 
+			if (e->KeyChar == '-')
+			{
+				if (!isMinusHandled)
+				{
+					String^ c = FirstKTB->Text;
+					FirstKTB->Text = "-" + c->Replace("-", "");
+					isMinusHandled = true;
+				}
+				e->Handled = true;
+			}
+			else
+			{
+				isMinusHandled = false;
 			}
 		}
 
