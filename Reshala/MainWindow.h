@@ -63,6 +63,7 @@ namespace Reshala {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ SelectedRoots;
+	private: System::Windows::Forms::Button^ ClearButton;
 
 
 
@@ -105,6 +106,7 @@ namespace Reshala {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SelectedRoots = (gcnew System::Windows::Forms::Label());
+			this->ClearButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FunctionVizualizer))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -299,9 +301,9 @@ namespace Reshala {
 			// 
 			this->HelpButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->HelpButton->Location = System::Drawing::Point(146, 143);
+			this->HelpButton->Location = System::Drawing::Point(261, 143);
 			this->HelpButton->Name = L"HelpButton";
-			this->HelpButton->Size = System::Drawing::Size(221, 46);
+			this->HelpButton->Size = System::Drawing::Size(122, 46);
 			this->HelpButton->TabIndex = 16;
 			this->HelpButton->Text = L"Справка";
 			this->HelpButton->UseVisualStyleBackColor = true;
@@ -351,11 +353,24 @@ namespace Reshala {
 			this->SelectedRoots->TabIndex = 20;
 			this->SelectedRoots->Text = L"[ ] ; [ ]";
 			// 
+			// ClearButton
+			// 
+			this->ClearButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->ClearButton->Location = System::Drawing::Point(133, 143);
+			this->ClearButton->Name = L"ClearButton";
+			this->ClearButton->Size = System::Drawing::Size(122, 46);
+			this->ClearButton->TabIndex = 21;
+			this->ClearButton->Text = L"Очистить";
+			this->ClearButton->UseVisualStyleBackColor = true;
+			this->ClearButton->Click += gcnew System::EventHandler(this, &MainWindow::ClearButton_Click);
+			// 
 			// MainWindow
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1002, 788);
+			this->Controls->Add(this->ClearButton);
 			this->Controls->Add(this->SelectedRoots);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
@@ -438,6 +453,7 @@ namespace Reshala {
 
 		e->Handled = true;
 	}
+
 	private: System::Void SecondKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		bool isMinusHandled = false;
 		//запрет на ввод запятой в начале
@@ -485,6 +501,7 @@ namespace Reshala {
 
 		e->Handled = true;
 	}
+
 	private: System::Void ThirdKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		//запрет на ввод запятой в начале
 		bool isMinusHandled = false;
@@ -533,6 +550,7 @@ namespace Reshala {
 
 		e->Handled = true;
 	}
+
 	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 
 		//поддержка лишь одной запятой
@@ -670,6 +688,12 @@ namespace Reshala {
 		hw->Show();
 	}
 	
+private: System::Void ClearButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	FirstKTB->Text = "";
+	SecondKTB->Text = "";
+	ThirdKTB->Text = "";
+	precisionbox->Text = "";
+}
 };
 
 }
