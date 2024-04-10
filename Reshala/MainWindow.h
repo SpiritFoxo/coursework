@@ -685,12 +685,16 @@ namespace Reshala {
 	}
 	
 //очистка текстбоксов
-private: System::Void ClearButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	FirstKTB->Text = "";
-	SecondKTB->Text = "";
-	ThirdKTB->Text = "";
-	precisionbox->Text = "";
-}
+private: 
+	System::Void ClearButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		FirstKTB->Text = "";
+		SecondKTB->Text = "";
+		ThirdKTB->Text = "";
+		precisionbox->Text = "";
+		FunctionVizualizer->Series[0]->Points->Clear();
+		FunctionVizualizer->Series[1]->Points->Clear();
+		FunctionVizualizer->Series[2]->Points->Clear();
+	}
 };
 
 }
