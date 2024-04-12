@@ -8,6 +8,7 @@ QuadraticEquationSolver::QuadraticEquationSolver(double a, double b, double c) {
 	this->d = DiscriminantFinder();
 }
 
+
 double QuadraticEquationSolver::DiscriminantFinder()
 {
 	double d;
@@ -24,6 +25,7 @@ array<String^>^ QuadraticEquationSolver::FirstType()
 	roots[2] = "(" + Convert::ToString(-1 * b) + " + sqrt(" + Convert::ToString(d) + ")) / " + Convert::ToString(2 * a);
 	roots[3] = "(" + Convert::ToString(-1 * b) + " - sqrt(" + Convert::ToString(d) + ")) / " + Convert::ToString(2 * a);
 	return roots;
+	delete roots;
 }
 
 
@@ -35,6 +37,7 @@ array<String^>^ QuadraticEquationSolver::SecondType()
 	roots[2] = Convert::ToString(-1 * b) + "/" + Convert::ToString(2 * a);
 	roots[3] = "";
 	return roots;
+	delete roots;
 }
 
 array<String^>^ QuadraticEquationSolver::ThirdType() {
@@ -44,6 +47,7 @@ array<String^>^ QuadraticEquationSolver::ThirdType() {
 	roots[2] = "Уравнение верно при любом x";
 	roots[3] = "";
 	return roots;
+	delete roots;
 }
 
 array<String^>^ QuadraticEquationSolver::FourthType() {
@@ -53,6 +57,7 @@ array<String^>^ QuadraticEquationSolver::FourthType() {
 	roots[2] = "0";
 	roots[3] = "";
 	return roots;
+	delete roots;
 
 }
 
@@ -63,6 +68,7 @@ array<String^>^ QuadraticEquationSolver::FifthType() {
 	roots[2] = Convert::ToString(-1 * c) + "/" + Convert::ToString(b);
 	roots[3] = "";
 	return roots;
+	delete roots;
 }
 
 array<String^>^ QuadraticEquationSolver::SixthType() {
@@ -72,6 +78,7 @@ array<String^>^ QuadraticEquationSolver::SixthType() {
 	roots[2] = "";
 	roots[3] = "";
 	return roots;
+	delete roots;
 
 }
 
@@ -118,7 +125,7 @@ array<String^>^ QuadraticEquationSolver::Solve()
 		roots = SixthType();
 		return roots;
 	}
-
+	delete roots;
 }
 
 double QuadraticEquationSolver::Function(double x)
@@ -179,4 +186,5 @@ array<String^>^ QuadraticEquationSolver::SolveSelection(double precision, double
 	}
 
 	return roots;
+	delete roots;
 }
