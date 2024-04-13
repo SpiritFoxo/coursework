@@ -137,6 +137,7 @@ namespace Reshala {
 			this->FirstKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FirstKTB->Location = System::Drawing::Point(8, 93);
+			this->FirstKTB->MaxLength = 5;
 			this->FirstKTB->Name = L"FirstKTB";
 			this->FirstKTB->Size = System::Drawing::Size(80, 26);
 			this->FirstKTB->TabIndex = 3;
@@ -147,6 +148,7 @@ namespace Reshala {
 			this->SecondKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->SecondKTB->Location = System::Drawing::Point(155, 93);
+			this->SecondKTB->MaxLength = 5;
 			this->SecondKTB->Name = L"SecondKTB";
 			this->SecondKTB->Size = System::Drawing::Size(80, 26);
 			this->SecondKTB->TabIndex = 4;
@@ -157,6 +159,7 @@ namespace Reshala {
 			this->ThirdKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->ThirdKTB->Location = System::Drawing::Point(287, 93);
+			this->ThirdKTB->MaxLength = 5;
 			this->ThirdKTB->Name = L"ThirdKTB";
 			this->ThirdKTB->Size = System::Drawing::Size(80, 26);
 			this->ThirdKTB->TabIndex = 5;
@@ -425,6 +428,10 @@ namespace Reshala {
 			}
 		}
 		
+		if (FirstKTB->Text->Contains(",") == true && FirstKTB->TextLength < 5) {
+			//if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+			if (e->KeyChar == 8) { return; }
+		}
 
 		if (FirstKTB->Text->Contains("-") == false && FirstKTB->TextLength > 0) {
 			if (e->KeyChar == ',') { return; }
@@ -495,8 +502,8 @@ namespace Reshala {
 		}
 
 		else {
-			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
-			if (e->KeyChar == 8) { return; }
+				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
+				if (e->KeyChar == 8) { return; }
 		}
 
 		e->Handled = true;
@@ -522,6 +529,7 @@ namespace Reshala {
 				if (e->KeyChar == 8) { return; }
 			}
 		}
+
 
 		if (ThirdKTB->Text->Contains("-") == false && ThirdKTB->TextLength > 0) {
 			if (e->KeyChar == ',') { return; }
