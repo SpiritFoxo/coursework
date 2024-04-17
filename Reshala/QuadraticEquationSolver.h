@@ -7,7 +7,7 @@ ref class QuadraticEquationSolver
 public:
 	QuadraticEquationSolver(double a, double b, double c);//конструктор
 	array<String^>^ Solve();//метод решения
-	double Function(double x);//получить значение y точке x
+	double Function(double x);//получить значение y в точке x
 	double GetPeak();//получить вершину
 	array<String^>^ SolveSelection(double precision, double border, int len);//решение методом подбора
 	

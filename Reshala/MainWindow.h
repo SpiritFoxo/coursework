@@ -611,13 +611,16 @@ namespace Reshala {
 		{
 			try
 			{
-
+				a = Convert::ToDouble(FirstKTB->Text);
 			}
 			catch (...)
 			{
+				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+				a = 0;
+				FirstKTB->Text = "0";
 
 			}
-			a = Convert::ToDouble(FirstKTB->Text);
+			
 		}
 		if (SecondKTB->Text == "") {
 			b = 0;
@@ -631,6 +634,8 @@ namespace Reshala {
 			catch (...)
 			{
 				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+				b = 0;
+				SecondKTB->Text = "0";
 			}
 			
 		}
@@ -639,7 +644,18 @@ namespace Reshala {
 		}
 		else
 		{
-			c = Convert::ToDouble(ThirdKTB->Text);
+			try
+			{
+				c = Convert::ToDouble(ThirdKTB->Text);
+			}
+			catch (...)
+			{
+				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+				c = 0;
+				ThirdKTB->Text = "0";
+
+			}
+			
 		}
 
 		
