@@ -416,8 +416,8 @@ namespace Reshala {
 			if (e->KeyChar == '-') { return; }
 		}
 		//поддержка лишь одной запятой
-		if (FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false) {
-			if (FirstKTB->TextLength == 1 && FirstKTB->Text->Contains("-") == true) {
+		if (FirstKTB->TextLength > 0 && !FirstKTB->Text->Contains(",")) {
+			if (FirstKTB->TextLength == 1 && FirstKTB->Text->Contains("-")) {
 				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 				if (e->KeyChar == 8) { return; }
 			}
@@ -428,12 +428,12 @@ namespace Reshala {
 			}
 		}
 		
-		if (FirstKTB->Text->Contains(",") == true && FirstKTB->TextLength < 5) {
+		if (FirstKTB->Text->Contains(",") && FirstKTB->TextLength < 5) {
 			if (e->KeyChar == 8) { return; }
 		}
 
-		if (FirstKTB->Text->Contains("-") == false && FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false) {
-			if (e->KeyChar == ',') { return; }
+		if (!FirstKTB->Text->Contains("-") && FirstKTB->TextLength > 0) {
+			if (!FirstKTB->Text->Contains(",")) { if (e->KeyChar == ',') { return; } }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
 			if (e->KeyChar == '-')
@@ -468,8 +468,8 @@ namespace Reshala {
 			if (e->KeyChar == '-') { return; }
 		}
 		//поддержка лишь одной запятой
-		if (SecondKTB->TextLength > 0 && SecondKTB->Text->Contains(",") == false) {
-			if (SecondKTB->TextLength == 1 && SecondKTB->Text->Contains("-") == true) {
+		if (SecondKTB->TextLength > 0 && !SecondKTB->Text->Contains(",")) {
+			if (SecondKTB->TextLength == 1 && SecondKTB->Text->Contains("-")) {
 				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 				if (e->KeyChar == 8) { return; }
 			}
@@ -480,8 +480,8 @@ namespace Reshala {
 			}
 		}
 
-		if (SecondKTB->Text->Contains("-") == false && SecondKTB->TextLength > 0 && SecondKTB->Text->Contains(",") == false) {
-			if (e->KeyChar == ',') { return; }
+		if (!SecondKTB->Text->Contains("-") && SecondKTB->TextLength > 0) {
+			if (!SecondKTB->Text->Contains(",")) { if (e->KeyChar == ',') { return; } }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
 			if (e->KeyChar == '-')
@@ -517,8 +517,8 @@ namespace Reshala {
 			if (e->KeyChar == '-') { return; }
 		}
 		//поддержка лишь одной запятой
-		if (ThirdKTB->TextLength > 0 && ThirdKTB->Text->Contains(",") == false) {
-			if (ThirdKTB->TextLength == 1 && ThirdKTB->Text->Contains("-") == true) {
+		if (ThirdKTB->TextLength > 0 && !ThirdKTB->Text->Contains(",")) {
+			if (ThirdKTB->TextLength == 1 && ThirdKTB->Text->Contains("-")) {
 				if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 				if (e->KeyChar == 8) { return; }
 			}
@@ -530,8 +530,8 @@ namespace Reshala {
 		}
 
 
-		if (ThirdKTB->Text->Contains("-") == false && ThirdKTB->TextLength > 0 && ThirdKTB->Text->Contains(",") == false) {
-			if (e->KeyChar == ',') { return; }
+		if (!ThirdKTB->Text->Contains("-") && ThirdKTB->TextLength > 0) {
+			if (!ThirdKTB->Text->Contains(",")) { if (e->KeyChar == ',') { return; } }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
 			if (e->KeyChar == '-')
@@ -561,7 +561,7 @@ namespace Reshala {
 	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 
 		//поддержка лишь одной запятой
-		if (precisionbox->TextLength > 0 && precisionbox->Text->Contains(",") == false) {
+		if (precisionbox->TextLength > 0 && !precisionbox->Text->Contains(",")) {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
@@ -609,6 +609,14 @@ namespace Reshala {
 		}
 		else
 		{
+			try
+			{
+
+			}
+			catch (...)
+			{
+
+			}
 			a = Convert::ToDouble(FirstKTB->Text);
 		}
 		if (SecondKTB->Text == "") {
@@ -616,7 +624,15 @@ namespace Reshala {
 		}
 		else
 		{
-			b = Convert::ToDouble(SecondKTB->Text);
+			try
+			{
+				b = Convert::ToDouble(SecondKTB->Text);
+			}
+			catch (...)
+			{
+				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+			}
+			
 		}
 		if (ThirdKTB->Text == "") {
 			c = 0;

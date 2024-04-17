@@ -1,15 +1,15 @@
-#pragma once
+п»ї#pragma once
 #include <math.h>
 using namespace System;
 
 ref class QuadraticEquationSolver
 {
 public:
-	QuadraticEquationSolver(double a, double b, double c);//конструктор
-	array<String^>^ Solve();//метод решения
-	double Function(double x);//получить значение y точке x
-	double GetPeak();//получить вершину
-	array<String^>^ SolveSelection(double precision, double border, int len);//решение методом подбора
+	QuadraticEquationSolver(double a, double b, double c);//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	array<String^>^ Solve();//РјРµС‚РѕРґ СЂРµС€РµРЅРёСЏ
+	double Function(double x);//РїРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ y С‚РѕС‡РєРµ x
+	double GetPeak();//РїРѕР»СѓС‡РёС‚СЊ РІРµСЂС€РёРЅСѓ
+	array<String^>^ SolveSelection(double precision, double border, int len);//СЂРµС€РµРЅРёРµ РјРµС‚РѕРґРѕРј РїРѕРґР±РѕСЂР°
 	
 private:
 	double a, b, c, d;
