@@ -480,7 +480,7 @@ namespace Reshala {
 			}
 		}
 
-		if (SecondKTB->Text->Contains("-") == false && SecondKTB->TextLength > 0) {
+		if (SecondKTB->Text->Contains("-") == false && SecondKTB->TextLength > 0 && SecondKTB->Text->Contains(",") == false) {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
@@ -530,7 +530,7 @@ namespace Reshala {
 		}
 
 
-		if (ThirdKTB->Text->Contains("-") == false && ThirdKTB->TextLength > 0) {
+		if (ThirdKTB->Text->Contains("-") == false && ThirdKTB->TextLength > 0 && ThirdKTB->Text->Contains(",") == false) {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
