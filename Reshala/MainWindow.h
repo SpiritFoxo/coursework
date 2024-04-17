@@ -429,11 +429,10 @@ namespace Reshala {
 		}
 		
 		if (FirstKTB->Text->Contains(",") == true && FirstKTB->TextLength < 5) {
-			//if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
 		}
 
-		if (FirstKTB->Text->Contains("-") == false && FirstKTB->TextLength > 0) {
+		if (FirstKTB->Text->Contains("-") == false && FirstKTB->TextLength > 0 && FirstKTB->Text->Contains(",") == false) {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
@@ -580,6 +579,20 @@ namespace Reshala {
 	private: System::Void SolveButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		double a, b, c, pr;
+		//костыльное исправление "-,"
+		if (FirstKTB->Text->Contains(",-") || FirstKTB->Text->Contains("-,")) {
+			FirstKTB->Text = FirstKTB->Text->Replace(",-", "-");
+			FirstKTB->Text = FirstKTB->Text->Replace("-,", "-");
+		}
+		if (SecondKTB->Text->Contains(",-") || SecondKTB->Text->Contains("-,")) {
+			SecondKTB->Text = SecondKTB->Text->Replace(",-", "-");
+			SecondKTB->Text = SecondKTB->Text->Replace("-,", "-");
+		}
+		if (ThirdKTB->Text->Contains(",-") || ThirdKTB->Text->Contains("-,")) {
+			ThirdKTB->Text = ThirdKTB->Text->Replace(",-", "-");
+			ThirdKTB->Text = ThirdKTB->Text->Replace("-,", "-");
+		}
+
 
 		//если поле пусто или равно 0, то точность подбора будет равна 1
 		if (precisionbox->Text == "" || precisionbox->Text == "0") {

@@ -5,11 +5,11 @@ using namespace System;
 ref class QuadraticEquationSolver
 {
 public:
-	QuadraticEquationSolver(double a, double b, double c);
-	array<String^>^ Solve();
-	double Function(double x);
-	double GetPeak();
-	array<String^>^ SolveSelection(double precision, double border, int len);
+	QuadraticEquationSolver(double a, double b, double c);//конструктор
+	array<String^>^ Solve();//метод решения
+	double Function(double x);//получить значение y точке x
+	double GetPeak();//получить вершину
+	array<String^>^ SolveSelection(double precision, double border, int len);//решение методом подбора
 	
 private:
 	double a, b, c, d;
