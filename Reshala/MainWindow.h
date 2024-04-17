@@ -600,7 +600,16 @@ namespace Reshala {
 		}
 		else
 		{
-			pr = Convert::ToDouble(precisionbox->Text);
+			try
+			{
+				pr = Convert::ToDouble(precisionbox->Text);
+			}
+			catch (...)
+			{				
+				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
+				pr = 1;
+				precisionbox->Text = "1";
+			}
 		}
 
 		//Если поля пусты автоматически присваивается значение 0
@@ -615,7 +624,7 @@ namespace Reshala {
 			}
 			catch (...)
 			{
-				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
 				a = 0;
 				FirstKTB->Text = "0";
 
@@ -633,7 +642,7 @@ namespace Reshala {
 			}
 			catch (...)
 			{
-				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
 				b = 0;
 				SecondKTB->Text = "0";
 			}
@@ -650,7 +659,7 @@ namespace Reshala {
 			}
 			catch (...)
 			{
-				MessageBox::Show(L"Попробуйте ввест норм число там, хз", L"Хреновый ввод");
+				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
 				c = 0;
 				ThirdKTB->Text = "0";
 
@@ -703,6 +712,7 @@ namespace Reshala {
 
 		//оси
 		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(Peak + LeftBorder));
+		FunctionVizualizer->Series[1]->Points->AddXY(0, 0);
 		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(Peak)+(2*a/-a));
 		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
 		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
