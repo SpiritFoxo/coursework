@@ -13,12 +13,15 @@ public:
 	
 private:
 	double a, b, c, d;
+	//6 методов решения для уравнений
 	array<String^>^ FirstType();
 	array<String^>^ SecondType();
 	array<String^>^ ThirdType();
 	array<String^>^ FourthType();
 	array<String^>^ FifthType();
 	array<String^>^ SixthType();
+	
+	//название говорит само за себя
 	double DiscriminantFinder();
 
 };
