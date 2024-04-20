@@ -59,7 +59,8 @@ namespace Reshala {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Button^ HelpButton;
-	private: System::Windows::Forms::TextBox^ precisionbox;
+	private: System::Windows::Forms::TextBox^ PrecisionKTB;
+
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ SelectedRoots;
@@ -102,7 +103,7 @@ namespace Reshala {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->HelpButton = (gcnew System::Windows::Forms::Button());
-			this->precisionbox = (gcnew System::Windows::Forms::TextBox());
+			this->PrecisionKTB = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SelectedRoots = (gcnew System::Windows::Forms::Label());
@@ -312,16 +313,16 @@ namespace Reshala {
 			this->HelpButton->UseVisualStyleBackColor = true;
 			this->HelpButton->Click += gcnew System::EventHandler(this, &MainWindow::HelpButton_Click);
 			// 
-			// precisionbox
+			// PrecisionKTB
 			// 
-			this->precisionbox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->PrecisionKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->precisionbox->Location = System::Drawing::Point(12, 529);
-			this->precisionbox->MaxLength = 5;
-			this->precisionbox->Name = L"precisionbox";
-			this->precisionbox->Size = System::Drawing::Size(171, 26);
-			this->precisionbox->TabIndex = 17;
-			this->precisionbox->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainWindow::precisionbox_KeyPress);
+			this->PrecisionKTB->Location = System::Drawing::Point(12, 529);
+			this->PrecisionKTB->MaxLength = 5;
+			this->PrecisionKTB->Name = L"PrecisionKTB";
+			this->PrecisionKTB->Size = System::Drawing::Size(171, 26);
+			this->PrecisionKTB->TabIndex = 17;
+			this->PrecisionKTB->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MainWindow::PrecisionKTB_KeyPress);
 			// 
 			// label4
 			// 
@@ -377,7 +378,7 @@ namespace Reshala {
 			this->Controls->Add(this->SelectedRoots);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->precisionbox);
+			this->Controls->Add(this->PrecisionKTB);
 			this->Controls->Add(this->HelpButton);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -558,10 +559,10 @@ namespace Reshala {
 		e->Handled = true;
 	}
 
-	private: System::Void precisionbox_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	private: System::Void PrecisionKTB_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 
 		//поддержка лишь одной запятой
-		if (precisionbox->TextLength > 0 && !precisionbox->Text->Contains(",")) {
+		if (PrecisionKTB->TextLength > 0 && !PrecisionKTB->Text->Contains(",")) {
 			if (e->KeyChar == ',') { return; }
 			if (e->KeyChar >= '0' && e->KeyChar <= '9') { return; }
 			if (e->KeyChar == 8) { return; }
@@ -595,26 +596,30 @@ namespace Reshala {
 
 
 		//если поле пусто или равно 0, то точность подбора будет равна 1
-		if (precisionbox->Text == "" || precisionbox->Text == "0") {
+		//Устал править возможности для ввода и костылить, так что теперь просто кидает окно с ошибкой и меняет коэффициенты на 1, если юзер пытается ввести не число или ввел его криво
+		if (PrecisionKTB->Text == "" || PrecisionKTB->Text == "0") {
 			pr = 1;
+			PrecisionKTB->Text = "1";
 		}
 		else
 		{
 			try
 			{
-				pr = Convert::ToDouble(precisionbox->Text);
+				pr = Convert::ToDouble(PrecisionKTB->Text);
 			}
 			catch (...)
-			{				
-				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
+			{	
+				//если юзер не знает, как выглядят числа, то кидаем ему окно с напоминанием о том, что вводимые данные должны быть корректны
+				MessageBox::Show(L"В следующий раз введите число", L"", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				pr = 1;
-				precisionbox->Text = "1";
+				PrecisionKTB->Text = "1";
 			}
 		}
 
-		//Если поля пусты автоматически присваивается значение 0
+		//Если поля пусты или не являются корректными числами, то автоматически присваивается значение 1
 		if (FirstKTB->Text == "") {
-			a = 0;
+			a = 1;
+			FirstKTB->Text = "1";
 		}
 		else
 		{
@@ -624,15 +629,17 @@ namespace Reshala {
 			}
 			catch (...)
 			{
-				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
-				a = 0;
-				FirstKTB->Text = "0";
+				//если юзер не знает, как выглядят числа, то кидаем ему окно с напоминанием о том, что вводимые данные должны быть корректны
+				MessageBox::Show(L"В следующий раз введите число", L"", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				a = 1;
+				FirstKTB->Text = "1";
 
 			}
 			
 		}
 		if (SecondKTB->Text == "") {
-			b = 0;
+			b = 1;
+			SecondKTB->Text = "1";
 		}
 		else
 		{
@@ -642,14 +649,16 @@ namespace Reshala {
 			}
 			catch (...)
 			{
-				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
-				b = 0;
-				SecondKTB->Text = "0";
+				//если юзер не знает, как выглядят числа, то кидаем ему окно с напоминанием о том, что вводимые данные должны быть корректны
+				MessageBox::Show(L"В следующий раз введите число", L"", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				b = 1;
+				SecondKTB->Text = "1";
 			}
 			
 		}
 		if (ThirdKTB->Text == "") {
-			c = 0;
+			c = 1;
+			ThirdKTB->Text = "1";
 		}
 		else
 		{
@@ -659,9 +668,10 @@ namespace Reshala {
 			}
 			catch (...)
 			{
-				MessageBox::Show(L"Попробуйте ввести норм число там, хз", L"Хреновый ввод");
-				c = 0;
-				ThirdKTB->Text = "0";
+				//если юзер не знает, как выглядят числа, то кидаем ему окно с напоминанием о том, что вводимые данные должны быть корректны
+				MessageBox::Show(L"В следующий раз введите число", L"", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				c = 1;
+				ThirdKTB->Text = "1";
 
 			}
 			
@@ -671,10 +681,10 @@ namespace Reshala {
 
 
 		//объявление переменных для хранения корней и класса решения
-		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver(a, b, c);
-		array<String^>^ Roots = gcnew array<String^>(4);
-		array<String^>^ RootsSelection = gcnew array<String^>(2);
-		Roots = solver->Solve();
+		QuadraticEquationSolver^ solver = gcnew QuadraticEquationSolver(a, b, c); //экземпляр класса с заданными коэффициентами
+		array<String^>^ Roots = gcnew array<String^>(4); //массив для хранения корней
+		array<String^>^ RootsSelection = gcnew array<String^>(2); //массив для хранения корней методом подбора
+		Roots = solver->Solve(); //получение корней
 
 		//Изменение текста для вывода корней
 		FirstRoot->Text = Roots[0];
@@ -716,20 +726,18 @@ namespace Reshala {
 		FunctionVizualizer->Series[1]->Points->AddXY(0, solver->Function(Peak)+(2*a/-a));
 		FunctionVizualizer->Series[2]->Points->AddXY(LeftBorder, 0);
 		FunctionVizualizer->Series[2]->Points->AddXY(RightBorder, 0);
+		FunctionVizualizer->Series[2]->Points->AddXY(0, 0);
 
 		//сам график
-		for (double i = (Peak + LeftBorder); i <= (Peak + RightBorder); i = i + 1) {
+		for (double i = (Peak + LeftBorder); i <= (Peak + RightBorder); i++) {
 			FunctionVizualizer->Series[0]->Points->AddXY(i, solver->Function(i));
 		}
 
 		//метод подбора
 
-		int RoundLen = precisionbox->TextLength;
-		if (precisionbox->Text->Contains(",")) {
+		int RoundLen = PrecisionKTB->TextLength;
+		if (PrecisionKTB->Text->Contains(",")) {
 			RoundLen = RoundLen - 1;
-		}
-		if (precisionbox->Text == "") {
-			RoundLen = 1;
 		}
 		RootsSelection = solver->SolveSelection(pr, RightBorder, RoundLen);
 		SelectedRoots->Text = RootsSelection[0] + " " + RootsSelection[1];
@@ -753,7 +761,12 @@ private:
 		FirstKTB->Text = "";
 		SecondKTB->Text = "";
 		ThirdKTB->Text = "";
-		precisionbox->Text = "";
+		PrecisionKTB->Text = "";
+		FirstRoot->Text = "";
+		SecondRoot->Text = "";
+		FirstRootAlt->Text = "";
+		SecondRootAlt->Text = "";
+		SelectedRoots->Text = "";
 		FunctionVizualizer->Series[0]->Points->Clear();
 		FunctionVizualizer->Series[1]->Points->Clear();
 		FunctionVizualizer->Series[2]->Points->Clear();
