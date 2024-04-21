@@ -172,7 +172,7 @@ namespace Reshala {
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(334, 20);
 			this->label8->TabIndex = 8;
-			this->label8->Text = L"Если D = 0, то уравнение имеет два корня:";
+			this->label8->Text = L"Если D > 0, то уравнение имеет два корня:";
 			// 
 			// pictureBox2
 			// 
