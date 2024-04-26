@@ -597,7 +597,7 @@ namespace Reshala {
 
 		//если поле пусто или равно 0, то точность подбора будет равна 1
 		//Устал править возможности для ввода и костылить, так что теперь просто кидает окно с ошибкой и меняет коэффициенты на 1, если юзер пытается ввести не число или ввел его криво
-		if (PrecisionKTB->Text == "" || PrecisionKTB->Text == "0") {
+		if (PrecisionKTB->Text == "" || PrecisionKTB->Text == "0" || (PrecisionKTB->TextLength > 1 && PrecisionKTB->Text->Contains(",") && PrecisionKTB->Text->EndsWith("0"))) {
 			pr = 1;
 			PrecisionKTB->Text = "1";
 		}
