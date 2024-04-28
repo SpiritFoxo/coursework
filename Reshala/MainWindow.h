@@ -135,7 +135,9 @@ namespace Reshala {
 			// 
 			// FirstKTB
 			// 
-			this->FirstKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->FirstKTB->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->FirstKTB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->FirstKTB->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FirstKTB->Location = System::Drawing::Point(8, 93);
 			this->FirstKTB->MaxLength = 5;
@@ -146,7 +148,9 @@ namespace Reshala {
 			// 
 			// SecondKTB
 			// 
-			this->SecondKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->SecondKTB->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->SecondKTB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->SecondKTB->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->SecondKTB->Location = System::Drawing::Point(155, 93);
 			this->SecondKTB->MaxLength = 5;
@@ -157,8 +161,10 @@ namespace Reshala {
 			// 
 			// ThirdKTB
 			// 
-			this->ThirdKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->ThirdKTB->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->ThirdKTB->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->ThirdKTB->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->ThirdKTB->Location = System::Drawing::Point(287, 93);
 			this->ThirdKTB->MaxLength = 5;
 			this->ThirdKTB->Name = L"ThirdKTB";
@@ -170,7 +176,7 @@ namespace Reshala {
 			// 
 			this->SolveButton->Font = (gcnew System::Drawing::Font(L"Arial", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->SolveButton->Location = System::Drawing::Point(8, 143);
+			this->SolveButton->Location = System::Drawing::Point(4, 135);
 			this->SolveButton->Name = L"SolveButton";
 			this->SolveButton->Size = System::Drawing::Size(123, 46);
 			this->SolveButton->TabIndex = 6;
@@ -181,11 +187,11 @@ namespace Reshala {
 			// RootTextLabel
 			// 
 			this->RootTextLabel->AutoSize = true;
-			this->RootTextLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->RootTextLabel->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->RootTextLabel->Location = System::Drawing::Point(12, 217);
+			this->RootTextLabel->Location = System::Drawing::Point(7, 203);
 			this->RootTextLabel->Name = L"RootTextLabel";
-			this->RootTextLabel->Size = System::Drawing::Size(171, 24);
+			this->RootTextLabel->Size = System::Drawing::Size(192, 26);
 			this->RootTextLabel->TabIndex = 7;
 			this->RootTextLabel->Text = L"Корни уравнения:";
 			// 
@@ -194,7 +200,7 @@ namespace Reshala {
 			this->FirstRoot->AutoSize = true;
 			this->FirstRoot->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->FirstRoot->Location = System::Drawing::Point(29, 263);
+			this->FirstRoot->Location = System::Drawing::Point(12, 244);
 			this->FirstRoot->Name = L"FirstRoot";
 			this->FirstRoot->Size = System::Drawing::Size(29, 20);
 			this->FirstRoot->TabIndex = 8;
@@ -205,7 +211,7 @@ namespace Reshala {
 			this->SecondRoot->AutoSize = true;
 			this->SecondRoot->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->SecondRoot->Location = System::Drawing::Point(29, 298);
+			this->SecondRoot->Location = System::Drawing::Point(206, 244);
 			this->SecondRoot->Name = L"SecondRoot";
 			this->SecondRoot->Size = System::Drawing::Size(29, 20);
 			this->SecondRoot->TabIndex = 9;
@@ -214,11 +220,11 @@ namespace Reshala {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(8, 345);
+			this->label1->Location = System::Drawing::Point(7, 283);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(208, 24);
+			this->label1->Size = System::Drawing::Size(219, 26);
 			this->label1->TabIndex = 10;
 			this->label1->Text = L"Альтернативный вид:";
 			// 
@@ -227,7 +233,7 @@ namespace Reshala {
 			this->SecondRootAlt->AutoSize = true;
 			this->SecondRootAlt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->SecondRootAlt->Location = System::Drawing::Point(25, 434);
+			this->SecondRootAlt->Location = System::Drawing::Point(206, 331);
 			this->SecondRootAlt->Name = L"SecondRootAlt";
 			this->SecondRootAlt->Size = System::Drawing::Size(29, 20);
 			this->SecondRootAlt->TabIndex = 12;
@@ -238,7 +244,7 @@ namespace Reshala {
 			this->FirstRootAlt->AutoSize = true;
 			this->FirstRootAlt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->FirstRootAlt->Location = System::Drawing::Point(25, 388);
+			this->FirstRootAlt->Location = System::Drawing::Point(13, 331);
 			this->FirstRootAlt->Name = L"FirstRootAlt";
 			this->FirstRootAlt->Size = System::Drawing::Size(29, 20);
 			this->FirstRootAlt->TabIndex = 11;
@@ -246,6 +252,7 @@ namespace Reshala {
 			// 
 			// FunctionVizualizer
 			// 
+			this->FunctionVizualizer->BackColor = System::Drawing::Color::FloralWhite;
 			chartArea1->AxisX->LabelStyle->Format = L"{0:0.00}";
 			chartArea1->Name = L"ChartArea1";
 			this->FunctionVizualizer->ChartAreas->Add(chartArea1);
@@ -293,11 +300,11 @@ namespace Reshala {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(12, 488);
+			this->label3->Location = System::Drawing::Point(7, 379);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(165, 24);
+			this->label3->Size = System::Drawing::Size(182, 26);
 			this->label3->TabIndex = 15;
 			this->label3->Text = L"Поиск подбором:";
 			// 
@@ -305,7 +312,7 @@ namespace Reshala {
 			// 
 			this->HelpButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->HelpButton->Location = System::Drawing::Point(261, 143);
+			this->HelpButton->Location = System::Drawing::Point(261, 135);
 			this->HelpButton->Name = L"HelpButton";
 			this->HelpButton->Size = System::Drawing::Size(122, 46);
 			this->HelpButton->TabIndex = 16;
@@ -317,7 +324,7 @@ namespace Reshala {
 			// 
 			this->PrecisionKTB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->PrecisionKTB->Location = System::Drawing::Point(12, 529);
+			this->PrecisionKTB->Location = System::Drawing::Point(12, 446);
 			this->PrecisionKTB->MaxLength = 5;
 			this->PrecisionKTB->Name = L"PrecisionKTB";
 			this->PrecisionKTB->Size = System::Drawing::Size(171, 26);
@@ -329,7 +336,7 @@ namespace Reshala {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(194, 535);
+			this->label4->Location = System::Drawing::Point(12, 423);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(149, 20);
 			this->label4->TabIndex = 18;
@@ -340,7 +347,7 @@ namespace Reshala {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(4, 581);
+			this->label5->Location = System::Drawing::Point(4, 496);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(251, 20);
 			this->label5->TabIndex = 19;
@@ -351,17 +358,16 @@ namespace Reshala {
 			this->SelectedRoots->AutoSize = true;
 			this->SelectedRoots->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->SelectedRoots->Location = System::Drawing::Point(4, 619);
+			this->SelectedRoots->Location = System::Drawing::Point(13, 532);
 			this->SelectedRoots->Name = L"SelectedRoots";
-			this->SelectedRoots->Size = System::Drawing::Size(45, 20);
+			this->SelectedRoots->Size = System::Drawing::Size(0, 20);
 			this->SelectedRoots->TabIndex = 20;
-			this->SelectedRoots->Text = L"[ ] ; [ ]";
 			// 
 			// ClearButton
 			// 
 			this->ClearButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->ClearButton->Location = System::Drawing::Point(133, 143);
+			this->ClearButton->Location = System::Drawing::Point(133, 135);
 			this->ClearButton->Name = L"ClearButton";
 			this->ClearButton->Size = System::Drawing::Size(122, 46);
 			this->ClearButton->TabIndex = 21;
@@ -373,7 +379,8 @@ namespace Reshala {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1002, 788);
+			this->BackColor = System::Drawing::Color::OldLace;
+			this->ClientSize = System::Drawing::Size(1002, 604);
 			this->Controls->Add(this->ClearButton);
 			this->Controls->Add(this->SelectedRoots);
 			this->Controls->Add(this->label5);
@@ -706,7 +713,7 @@ namespace Reshala {
 		FunctionVizualizer->Series[2]->Points->Clear();
 
 		//границы рисования графика
-		LeftBorder = c * -2;
+		LeftBorder = b * -2;
 		if (LeftBorder > 0) {
 			RightBorder = LeftBorder;
 			LeftBorder = -1 * LeftBorder;
